@@ -1,4 +1,4 @@
-# 🧠 AI Engineering Odyssey: From MERN to Senior AI Engineer
+# 🧠 AI Engineering Odyssey
 
 [![Status](https://img.shields.io/badge/Status-Active%20Learning-00E5FF?style=for-the-badge&logo=rocket)](https://github.com/)
 [![Track](https://img.shields.io/badge/Track-Full--Stack%20to%20AI-FF6B6B?style=for-the-badge)](./AI_Engineering_Roadmap.md)

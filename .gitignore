@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment Variables & Secrets (CRITICAL FOR AI KEYS)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Vector DB & Cache Stores
+.chroma/
+*.sqlite3
+__pycache__/
+.cache/
+
+# System & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

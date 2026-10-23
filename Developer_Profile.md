@@ -8,13 +8,13 @@
 | Attribute | Current Value |
 | :--- | :--- |
 | **Title** | **AI Intern (Level 1)** |
-| **Total XP** | `15 / 100 XP` (to Level 2) |
+| **Total XP** | `40 / 100 XP` (to Level 2) |
 | **Daily Streak** | `1 🔥` |
 | **Completed Projects** | `0 / 4` |
 | **Rank Status** | Novice Builder |
 
 ```
-Progress to Level 2: [===-----------------] 15% (15 / 100 XP)
+Progress to Level 2: [========------------] 40% (40 / 100 XP)
 ```
 
 ---
@@ -64,9 +64,7 @@ Progress to Level 2: [===-----------------] 15% (15 / 100 XP)
 ---
 
 ## 🏆 Unlocked Badges & Achievements
-*No badges unlocked yet. Complete your first coding challenge to earn your inaugural badge!*
-
-- 🔒 **First Token:** Emit your first streamed LLM token.
+- 🔓 **First Token:** Emit your first streamed LLM token. *(Unlocked!)*
 - 🔒 **Schema Master:** Enforce deterministic JSON output from a stochastic model.
 - 🔒 **Embedding Architect:** Vectorize and retrieve contextual documents.
 - 🔒 **Agent Commander:** Build an autonomous loop that successfully calls an external tool.
@@ -77,3 +75,4 @@ Progress to Level 2: [===-----------------] 15% (15 / 100 XP)
 ## 📜 Activity Log
 - **Session 1 (Day 1):** Workspace initialized. Mentorship guidelines, roadmap, and developer profile established. Phase 1 ready for launch.
 - **Session 1 (Day 1) Milestone:** Completed Mission 1: Backend scaffolding & foundational environment initialized. (+15 XP)
+- **Session 1 (Day 1) Milestone:** Completed Mission 2: Connected Google GenAI SDK and verified real-time token streaming. Unlocked "First Token" badge! (+25 XP)

@@ -8,13 +8,13 @@
 | Attribute | Current Value |
 | :--- | :--- |
 | **Title** | **AI Intern (Level 1)** |
-| **Total XP** | `40 / 100 XP` (to Level 2) |
+| **Total XP** | `65 / 100 XP` (to Level 2) |
 | **Daily Streak** | `1 🔥` |
 | **Completed Projects** | `0 / 4` |
 | **Rank Status** | Novice Builder |
 
 ```
-Progress to Level 2: [========------------] 40% (40 / 100 XP)
+Progress to Level 2: [=============-------] 65% (65 / 100 XP)
 ```
 
 ---
@@ -34,9 +34,9 @@ Progress to Level 2: [========------------] 40% (40 / 100 XP)
 ## 🗺️ Roadmap Milestone Checklist
 
 - [ ] **Phase 1: API Integrations & Prompt Engineering**
-  - [ ] System prompt design & role conditioning
+  - [x] System prompt design & role conditioning
   - [ ] Structured JSON output parsing & schema validation
-  - [ ] Real-time token streaming over HTTP/SSE
+  - [x] Real-time token streaming over HTTP/SSE
   - [ ] Session memory & sliding window context management
   - [ ] **Project 1 Capstone:** Context-Aware Customer Support Engine (React + Node)
 
@@ -76,3 +76,4 @@ Progress to Level 2: [========------------] 40% (40 / 100 XP)
 - **Session 1 (Day 1):** Workspace initialized. Mentorship guidelines, roadmap, and developer profile established. Phase 1 ready for launch.
 - **Session 1 (Day 1) Milestone:** Completed Mission 1: Backend scaffolding & foundational environment initialized. (+15 XP)
 - **Session 1 (Day 1) Milestone:** Completed Mission 2: Connected Google GenAI SDK and verified real-time token streaming. Unlocked "First Token" badge! (+25 XP)
+- **Session 2 Milestone:** Implemented production Express SSE streaming server (`index.js`) with system conditioning, connection lifecycle management, and verified via cURL. (+25 XP)

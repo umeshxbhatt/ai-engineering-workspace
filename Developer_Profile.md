@@ -8,13 +8,13 @@
 | Attribute | Current Value |
 | :--- | :--- |
 | **Title** | **AI Intern (Level 1)** |
-| **Total XP** | `65 / 100 XP` (to Level 2) |
-| **Daily Streak** | `1 🔥` |
+| **Total XP** | `90 / 100 XP` (to Level 2) |
+| **Daily Streak** | `2 🔥` |
 | **Completed Projects** | `0 / 4` |
 | **Rank Status** | Novice Builder |
 
 ```
-Progress to Level 2: [=============-------] 65% (65 / 100 XP)
+Progress to Level 2: [==================--] 90% (90 / 100 XP)
 ```
 
 ---
@@ -37,7 +37,7 @@ Progress to Level 2: [=============-------] 65% (65 / 100 XP)
   - [x] System prompt design & role conditioning
   - [ ] Structured JSON output parsing & schema validation
   - [x] Real-time token streaming over HTTP/SSE
-  - [ ] Session memory & sliding window context management
+  - [x] Session memory & sliding window context management
   - [ ] **Project 1 Capstone:** Context-Aware Customer Support Engine (React + Node)
 
 - [ ] **Phase 2: RAG & Vector Databases**
@@ -77,3 +77,4 @@ Progress to Level 2: [=============-------] 65% (65 / 100 XP)
 - **Session 1 (Day 1) Milestone:** Completed Mission 1: Backend scaffolding & foundational environment initialized. (+15 XP)
 - **Session 1 (Day 1) Milestone:** Completed Mission 2: Connected Google GenAI SDK and verified real-time token streaming. Unlocked "First Token" badge! (+25 XP)
 - **Session 2 Milestone:** Implemented production Express SSE streaming server (`index.js`) with system conditioning, connection lifecycle management, and verified via cURL. (+25 XP)
+- **Session 3 Milestone:** Implemented conversational multi-turn session memory with sliding window context management (`formatConversationHistory`), bounded token budget, and verified via multi-turn cURL payload. (+25 XP)

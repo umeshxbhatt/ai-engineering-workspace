@@ -36,6 +36,38 @@ Guidelines:
 `;
 
 /**
+ * Formats and bounds the conversation history for Gemini.
+ * Enforces a sliding window buffer to prevent token explosion.
+ *
+ * @param {Array<{role: string, text: string}>} history - Previous messages
+ * @param {string} newMessage - The latest user message
+ * @param {number} maxTurns - Maximum previous messages to retain (default: 6)
+ * @returns {Array<{role: string, parts: Array<{text: string}>}>} Formatted contents for Gemini
+ */
+function formatConversationHistory(history = [], newMessage, maxTurns = 6) {
+  // 1. Sliding Window: Take only the last 'maxTurns' messages
+  const recentHistory = Array.isArray(history) ? history.slice(-maxTurns) : [];
+
+  // 2. Map history to Gemini's schema: { role: 'user' | 'model', parts: [{ text }] }
+  const formattedContents = recentHistory.map((item) => {
+    // Sanitize role: Gemini strictly allows 'user' or 'model'
+    const role = item.role === 'model' || item.role === 'assistant' ? 'model' : 'user';
+    return {
+      role,
+      parts: [{ text: item.text || '' }],
+    };
+  });
+
+  // 3. Append the brand new user message to the very end
+  formattedContents.push({
+    role: 'user',
+    parts: [{ text: newMessage }],
+  });
+
+  return formattedContents;
+}
+
+/**
  * Health Check Endpoint
  * Standard production pattern: allows load balancers and container orchestrators (Kubernetes/Docker)
  * to verify that the server is alive and accepting traffic.
@@ -53,7 +85,7 @@ app.get('/health', (req, res) => {
  * Uses Server-Sent Events (SSE) over HTTP chunked transfer
  */
 app.post('/api/chat/stream', async (req, res) => {
-  const { message } = req.body;
+  const { message, history = [] } = req.body;
 
   // 1. Input Validation: Fail early before invoking external APIs
   if (!message || typeof message !== 'string' || message.trim() === '') {
@@ -85,10 +117,13 @@ app.post('/api/chat/stream', async (req, res) => {
   });
 
   try {
-    // 4. Request generation stream from Gemini API
+    // 4. Format contents with sliding window history
+    const contents = formatConversationHistory(history, message, 6);
+
+    // 5. Request generation stream from Gemini API
     const responseStream = await ai.models.generateContentStream({
       model: 'gemini-3.5-flash-lite',
-      contents: message,
+      contents: contents,
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
       },

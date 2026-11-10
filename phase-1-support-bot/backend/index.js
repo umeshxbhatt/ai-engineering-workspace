@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { GoogleGenAI } from '@google/genai';
+import { GoogleGenAI, Type } from '@google/genai';
 
 // 1. Load environment variables from .env
 dotenv.config();
@@ -165,9 +165,115 @@ app.post('/api/chat/stream', async (req, res) => {
   }
 });
 
+/**
+ * Strict JSON Schema for Automated Support Ticket Extraction
+ * Constrains Gemini's token generator to emit 100% deterministic JSON
+ */
+const TICKET_SCHEMA = {
+  type: Type.OBJECT,
+  properties: {
+    intent: {
+      type: Type.STRING,
+      enum: ['BILLING', 'TECHNICAL', 'FEATURE_REQUEST', 'ACCOUNT', 'GENERAL'],
+      description: 'The primary classification category of the customer issue',
+    },
+    urgency: {
+      type: Type.STRING,
+      enum: ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'],
+      description: 'Priority level for customer support triaging',
+    },
+    sentiment: {
+      type: Type.NUMBER,
+      description: 'Customer sentiment score between -1.0 (extremely angry/frustrated) and 1.0 (delighted)',
+    },
+    requiresEscalation: {
+      type: Type.BOOLEAN,
+      description: 'True if a human engineer, manager, or billing specialist must intervene',
+    },
+    summary: {
+      type: Type.STRING,
+      description: 'A crisp one-sentence summary of the core issue and resolution status',
+    },
+  },
+  required: ['intent', 'urgency', 'sentiment', 'requiresEscalation', 'summary'],
+};
+
+/**
+ * Structured Output Endpoint: Automated Ticket Extraction & Sentiment Triaging
+ * Takes conversation history and returns guaranteed JSON conforming to TICKET_SCHEMA
+ */
+app.post('/api/chat/analyze-ticket', async (req, res) => {
+  const { conversation } = req.body;
+
+  if (!conversation) {
+    return res.status(400).json({ error: 'A "conversation" string or message array is required in the request body.' });
+  }
+
+  // Format conversation input into readable transcript for the model
+  let transcript = '';
+  if (Array.isArray(conversation)) {
+    transcript = conversation
+      .map((item) => `${item.role === 'model' ? 'Nova (Support)' : 'Customer'}: ${item.text || ''}`)
+      .join('\n');
+  } else if (typeof conversation === 'string') {
+    transcript = conversation;
+  } else {
+    return res.status(400).json({ error: 'Conversation must be a string or array of messages.' });
+  }
+
+  const prompt = `
+Analyze the following customer support interaction and extract a structured support ticket.
+Ensure the sentiment score, urgency, and escalation flags strictly reflect the customer's emotions and issue severity.
+
+--- TRANSCRIPT ---
+${transcript}
+`;
+
+  try {
+    // Production reliability: Retry transient errors (like 503 high demand spikes) with exponential backoff
+    let attempts = 0;
+    const maxAttempts = 3;
+    let response;
+
+    while (attempts < maxAttempts) {
+      try {
+        attempts++;
+        response = await ai.models.generateContent({
+          model: 'gemini-3.5-flash-lite',
+          contents: prompt,
+          config: {
+            responseMimeType: 'application/json',
+            responseSchema: TICKET_SCHEMA,
+          },
+        });
+        break; // Success!
+      } catch (err) {
+        if (attempts >= maxAttempts) throw err;
+        console.warn(`⚠️ Gemini API retry attempt ${attempts} due to: ${err.message}`);
+        await new Promise((resolve) => setTimeout(resolve, 1000 * attempts));
+      }
+    }
+
+    // Since Gemini strictly adhered to responseSchema, response.text is guaranteed valid JSON!
+    const ticketData = JSON.parse(response.text);
+
+    return res.json({
+      success: true,
+      ticket: ticketData,
+    });
+  } catch (error) {
+    console.error('❌ Error analyzing support ticket:', error);
+    return res.status(500).json({
+      error: 'Failed to analyze conversation for structured ticket.',
+      details: error.message,
+    });
+  }
+});
+
 // 6. Start Server
 app.listen(PORT, () => {
   console.log(`🚀 AI Support Bot Backend running on http://localhost:${PORT}`);
   console.log(`📡 Health Check: http://localhost:${PORT}/health`);
   console.log(`💬 Chat Stream: POST http://localhost:${PORT}/api/chat/stream`);
+  console.log(`🎫 Analyze Ticket: POST http://localhost:${PORT}/api/chat/analyze-ticket`);
 });

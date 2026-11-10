@@ -7,14 +7,14 @@
 ## 👤 Operative Status
 | Attribute | Current Value |
 | :--- | :--- |
-| **Title** | **AI Intern (Level 1)** |
-| **Total XP** | `90 / 100 XP` (to Level 2) |
+| **Title** | **AI Apprentice (Level 2) 🌟** |
+| **Total XP** | `125 / 250 XP` (to Level 3) |
 | **Daily Streak** | `2 🔥` |
 | **Completed Projects** | `0 / 4` |
-| **Rank Status** | Novice Builder |
+| **Rank Status** | Intermediate Builder |
 
 ```
-Progress to Level 2: [==================--] 90% (90 / 100 XP)
+Progress to Level 3: [==========----------] 50% (125 / 250 XP)
 ```
 
 ---
@@ -22,8 +22,8 @@ Progress to Level 2: [==================--] 90% (90 / 100 XP)
 ## ⚡ Skill Tree & Proficiencies
 | Skill Domain | Tier | Mastery Level | Associated MERN Anchor |
 | :--- | :---: | :---: | :--- |
-| **Prompt Engineering & Structured Outputs** | Tier 1 | ⚪ Novice (0/100) | REST Payload & Schema Validation (Zod/Joi) |
-| **Streaming & Real-Time AI UX** | Tier 1 | ⚪ Novice (0/100) | WebSockets & Server-Sent Events (SSE) |
+| **Prompt Engineering & Structured Outputs** | Tier 1 | 🟢 Apprentice (50/100) | REST Payload & Schema Validation (Zod/Joi) |
+| **Streaming & Real-Time AI UX** | Tier 1 | 🟢 Apprentice (50/100) | WebSockets & Server-Sent Events (SSE) |
 | **Embeddings & Vector Databases** | Tier 2 | ⚪ Locked (0/100) | MongoDB Indexes vs. HNSW/Cosine Indexes |
 | **RAG Architectures & Chunking** | Tier 2 | ⚪ Locked (0/100) | Query Hydration & Aggregation Pipelines |
 | **Agentic Loops & Tool Dispatch** | Tier 3 | ⚪ Locked (0/100) | Microservices, API Gateways & Router Logic |
@@ -35,7 +35,7 @@ Progress to Level 2: [==================--] 90% (90 / 100 XP)
 
 - [ ] **Phase 1: API Integrations & Prompt Engineering**
   - [x] System prompt design & role conditioning
-  - [ ] Structured JSON output parsing & schema validation
+  - [x] Structured JSON output parsing & schema validation
   - [x] Real-time token streaming over HTTP/SSE
   - [x] Session memory & sliding window context management
   - [ ] **Project 1 Capstone:** Context-Aware Customer Support Engine (React + Node)
@@ -65,7 +65,7 @@ Progress to Level 2: [==================--] 90% (90 / 100 XP)
 
 ## 🏆 Unlocked Badges & Achievements
 - 🔓 **First Token:** Emit your first streamed LLM token. *(Unlocked!)*
-- 🔒 **Schema Master:** Enforce deterministic JSON output from a stochastic model.
+- 🔓 **Schema Master:** Enforce deterministic JSON output from a stochastic model. *(Unlocked!)*
 - 🔒 **Embedding Architect:** Vectorize and retrieve contextual documents.
 - 🔒 **Agent Commander:** Build an autonomous loop that successfully calls an external tool.
 - 🔒 **Production Ready:** Deploy an AI service with automated eval benchmarks.
@@ -78,3 +78,4 @@ Progress to Level 2: [==================--] 90% (90 / 100 XP)
 - **Session 1 (Day 1) Milestone:** Completed Mission 2: Connected Google GenAI SDK and verified real-time token streaming. Unlocked "First Token" badge! (+25 XP)
 - **Session 2 Milestone:** Implemented production Express SSE streaming server (`index.js`) with system conditioning, connection lifecycle management, and verified via cURL. (+25 XP)
 - **Session 3 Milestone:** Implemented conversational multi-turn session memory with sliding window context management (`formatConversationHistory`), bounded token budget, and verified via multi-turn cURL payload. (+25 XP)
+- **Session 4 Milestone:** Implemented Structured Output Ticket Extraction (`/api/chat/analyze-ticket`) with Gemini JSON Schema (`TICKET_SCHEMA`) & exponential backoff retry. Unlocked "Schema Master" badge and reached Level 2: AI Apprentice! (+35 XP)

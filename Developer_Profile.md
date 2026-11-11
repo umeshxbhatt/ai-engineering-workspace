@@ -8,13 +8,13 @@
 | Attribute | Current Value |
 | :--- | :--- |
 | **Title** | **AI Apprentice (Level 2) 🌟** |
-| **Total XP** | `125 / 250 XP` (to Level 3) |
-| **Daily Streak** | `2 🔥` |
-| **Completed Projects** | `0 / 4` |
-| **Rank Status** | Intermediate Builder |
+| **Total XP** | `165 / 250 XP` (to Level 3) |
+| **Daily Streak** | `3 🔥` |
+| **Completed Projects** | `1 / 4` (Phase 1 Complete! 🎉) |
+| **Rank Status** | Full-Stack AI Builder |
 
 ```
-Progress to Level 3: [==========----------] 50% (125 / 250 XP)
+Progress to Level 3: [=============-------] 66% (165 / 250 XP)
 ```
 
 ---
@@ -22,9 +22,9 @@ Progress to Level 3: [==========----------] 50% (125 / 250 XP)
 ## ⚡ Skill Tree & Proficiencies
 | Skill Domain | Tier | Mastery Level | Associated MERN Anchor |
 | :--- | :---: | :---: | :--- |
-| **Prompt Engineering & Structured Outputs** | Tier 1 | 🟢 Apprentice (50/100) | REST Payload & Schema Validation (Zod/Joi) |
-| **Streaming & Real-Time AI UX** | Tier 1 | 🟢 Apprentice (50/100) | WebSockets & Server-Sent Events (SSE) |
-| **Embeddings & Vector Databases** | Tier 2 | ⚪ Locked (0/100) | MongoDB Indexes vs. HNSW/Cosine Indexes |
+| **Prompt Engineering & Structured Outputs** | Tier 1 | 🔵 Senior Apprentice (80/100) | REST Payload & Schema Validation (Zod/Joi) |
+| **Streaming & Real-Time AI UX** | Tier 1 | 🔵 Senior Apprentice (80/100) | WebSockets & Server-Sent Events (SSE) |
+| **Embeddings & Vector Databases** | Tier 2 | ⚪ Unlocked (0/100) | MongoDB Indexes vs. HNSW/Cosine Indexes |
 | **RAG Architectures & Chunking** | Tier 2 | ⚪ Locked (0/100) | Query Hydration & Aggregation Pipelines |
 | **Agentic Loops & Tool Dispatch** | Tier 3 | ⚪ Locked (0/100) | Microservices, API Gateways & Router Logic |
 | **MLOps, Evals & Production Reliability** | Tier 4 | ⚪ Locked (0/100) | CI/CD, APM, Observability & Unit/E2E Testing |
@@ -33,12 +33,12 @@ Progress to Level 3: [==========----------] 50% (125 / 250 XP)
 
 ## 🗺️ Roadmap Milestone Checklist
 
-- [ ] **Phase 1: API Integrations & Prompt Engineering**
+- [x] **Phase 1: API Integrations & Prompt Engineering (COMPLETED 🎉)**
   - [x] System prompt design & role conditioning
   - [x] Structured JSON output parsing & schema validation
   - [x] Real-time token streaming over HTTP/SSE
   - [x] Session memory & sliding window context management
-  - [ ] **Project 1 Capstone:** Context-Aware Customer Support Engine (React + Node)
+  - [x] **Project 1 Capstone:** Context-Aware Customer Support Engine (React + Node)
 
 - [ ] **Phase 2: RAG & Vector Databases**
   - [ ] Embedding generation mechanics & dimensionality intuition
@@ -79,3 +79,4 @@ Progress to Level 3: [==========----------] 50% (125 / 250 XP)
 - **Session 2 Milestone:** Implemented production Express SSE streaming server (`index.js`) with system conditioning, connection lifecycle management, and verified via cURL. (+25 XP)
 - **Session 3 Milestone:** Implemented conversational multi-turn session memory with sliding window context management (`formatConversationHistory`), bounded token budget, and verified via multi-turn cURL payload. (+25 XP)
 - **Session 4 Milestone:** Implemented Structured Output Ticket Extraction (`/api/chat/analyze-ticket`) with Gemini JSON Schema (`TICKET_SCHEMA`) & exponential backoff retry. Unlocked "Schema Master" badge and reached Level 2: AI Apprentice! (+35 XP)
+- **Session 5 Milestone:** Architected and built the full React + Vite frontend capstone (`App.jsx`, `index.css`) featuring real-time SSE token stream consumption via `ReadableStream`, `AbortController` cancellation, and CRM ticket metadata extraction. Phase 1 officially completed! (+40 XP)

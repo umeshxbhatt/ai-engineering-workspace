@@ -151,7 +151,7 @@ app.post('/api/chat/stream', async (req, res) => {
       res.end();
     }
   } catch (error) {
-    console.error('❌ Error in /api/chat/stream:', error);
+    console.error('Error in /api/chat/stream:', error);
 
     // If headers were not yet sent, respond with standard HTTP 500 JSON
     if (!res.headersSent) {
